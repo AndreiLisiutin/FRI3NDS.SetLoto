@@ -4,11 +4,6 @@
     <TargetFramework>net452</TargetFramework>
     <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\app\" />
-    <Folder Include="wwwroot\styles\" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
@@ -21,7 +16,15 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="wwwroot\app\app.js" />
+    <None Include="wwwroot\app\components\about\about.js" />
+    <None Include="wwwroot\app\services\test.service.js" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\FRI3NDS.SetLoto.Utilities\FRI3NDS.SetLoto.Utilities.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\app\directives\" />
   </ItemGroup>
 
 </Project>
