@@ -5,14 +5,14 @@ angular.module('loto.controllers')
 		'$stateProvider',
 		function ($stateProvider) {
 			$stateProvider
-				.state('loto.navigation.about', {
-					url: '/about',
-					templateUrl: 'app/components/about/about.html',
-					controller: 'AboutController'
+				.state('loto.navigation', {
+					abstract: true,
+					templateUrl: 'app/components/navigation/navigation.html',
+					controller: 'NavigationController'
 				});
 		}
 	])
-	.controller('AboutController', [
+	.controller('NavigationController', [
 		'$scope', '$state', '$timeout',
 		function ($scope, $state, $timeout) {
 

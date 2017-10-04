@@ -4,6 +4,30 @@
     <TargetFramework>net452</TargetFramework>
     <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\app\components\about\about.html" />
+    <Content Include="wwwroot\app\components\about\about.js" />
+    <Content Include="wwwroot\app\components\about\user-review.html">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\app\components\about\user-review.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\app\components\cards-selection\cards-selection.html" />
+    <Content Include="wwwroot\app\components\cards-selection\cards-selection.js" />
+    <Content Include="wwwroot\app\components\navigation\navigation.html" />
+    <Content Include="wwwroot\app\components\navigation\navigation.js" />
+    <Content Include="wwwroot\app\components\navigation\user-review.html" />
+    <Content Include="wwwroot\app\components\navigation\user-review.js" />
+    <Content Include="wwwroot\app\components\user-review\about.html">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\app\components\user-review\user-review.html" />
+    <Content Include="wwwroot\app\components\user-review\user-review.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
