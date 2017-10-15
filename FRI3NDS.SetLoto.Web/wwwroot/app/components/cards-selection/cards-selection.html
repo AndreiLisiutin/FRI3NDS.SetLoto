@@ -1,6 +1,13 @@
 ﻿<h1>Подбор карточек</h1>
 <div>
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, aliquid dolore in inventore molestias sint
-	voluptates! Autem ea exercitationem nihil soluta velit. Deleniti fugiat illo nihil omnis quidem repellat
-	repellendus!
+	<div class="">
+		<form name="cardForm">
+			<div class="form-group row" ng-class="{'has-danger': cardForm.ticketPhoto.$invalid}">
+				<label class="col-lg-2 col-form-label" for="ticketPhoto">Билет</label>
+				<input name="ticketPhoto" id="ticketPhoto" class="form-control col-lg-10" type="file" required
+				       ng-model="ticketPhoto" base-sixty-four-input accept=".*">
+			</div>
+			<button class="btn btn-primary" ng-disabled="cardForm.$invalid" ng-click="recognizeNumbers()">ОК</button>
+		</form>
+	</div>
 </div>
