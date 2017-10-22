@@ -3,10 +3,10 @@
 
 	angular
 		.module('loto.services')
-		.factory('TicketService', ['$resource', function ($resource) {
-			return $resource('/api/Ticket/:id', null, {
+		.factory('CardService', ['$resource', function ($resource) {
+			return $resource('/api/Card/:id', null, {
 				recognizeNumbers: {
-					url: '/api/Ticket/RecognizeNumbers',
+					url: '/api/Card/RecognizeNumbers',
 					method: 'POST',
 					isArray: false
 				}

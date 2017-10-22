@@ -1,13 +1,38 @@
 ﻿<h1>Подбор карточек</h1>
-<div>
-	<div class="">
-		<form name="cardForm">
-			<div class="form-group row" ng-class="{'has-danger': cardForm.ticketPhoto.$invalid}">
-				<label class="col-lg-2 col-form-label" for="ticketPhoto">Билет</label>
-				<input name="ticketPhoto" id="ticketPhoto" class="form-control col-lg-10" type="file" required
-				       ng-model="ticketPhoto" base-sixty-four-input accept=".*">
+<div class="cards-selection d-flex flex-row">
+	<!--<div class="">-->
+	<!--<form name="cardForm">-->
+	<!--<div class="form-group row" ng-class="{'has-danger': cardForm.cardPhoto.$invalid}">-->
+	<!--<label class="col-lg-2 col-form-label" for="cardPhoto">Билет</label>-->
+	<!--<input name="cardPhoto" id="cardPhoto" class="form-control col-lg-10" type="file" required-->
+	<!--ng-model="cardPhoto" base-sixty-four-input accept=".*">-->
+	<!--</div>-->
+	<!--<button class="btn btn-primary" ng-disabled="cardForm.$invalid" ng-click="recognizeNumbers()">ОК</button>-->
+	<!--</form>-->
+	<!--</div>-->
+	<div class="cards-sets-container">
+		<div ng-repeat="cardsSet in cardsSets" class="cards-set">
+			<div class="cards-set__name">{{cardsSet.id}} набор</div>
+			<div class="cards-set__all-numbers">1..90</div>
+			<div class="cards-set__new-card">
+				<div>Вставьте изображение карточки</div>
+				<!--<form class="">-->
+					<!--<input name="newCardPhoto" id="newCardPhoto" class="form-control" type="file" required-->
+					       <!--ng-model="newCardPhoto" base-sixty-four-input accept=".*" ng-change="addCard(cardsSet);">-->
+				<!--</form>-->
+				<ng-dropzone class="dropzone" options="dzOptions" callbacks="dzCallbacks" methods="dzMethods"></ng-dropzone>
+
 			</div>
-			<button class="btn btn-primary" ng-disabled="cardForm.$invalid" ng-click="recognizeNumbers()">ОК</button>
-		</form>
+			<div ng-repeat="card in cardsSet.cards" class="cards-set__card-wrapper">
+				<div class="cards-set__card">
+					<div ng-repeat="cardLine in card.cardLines" class="cards-set__card-row">
+						<div ng-repeat="number in cardLine.numbers" class="cards-set__card-cell">{{number}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="cards-buttons-container">
+		<button ng-click="addCardsSet()">New set</button>
 	</div>
 </div>

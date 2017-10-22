@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 
@@ -9,10 +11,10 @@ namespace FRI3NDS.SetLoto.Web.Controllers
 	/// <summary>
 	/// Контроллер билетов.
 	/// </summary>
-	[Route("api/Ticket")]
-	public class TicketController : Controller
+	[Route("api/Card")]
+	public class CardController : Controller
 	{
-		public TicketController()
+		public CardController()
 		{
 			this.random = new Random();
 		}
@@ -24,15 +26,21 @@ namespace FRI3NDS.SetLoto.Web.Controllers
 		/// </summary>
 		/// <param name="ьщвуд"></param>
 		[HttpPost("RecognizeNumbers")]
-		public Ticket RecognizeNumbers([FromBody]RecognizeNumbersViewModel model)
+		public Card RecognizeNumbers(IFormFile uploads)
 		{
+			using (var fileStream = new FileStream("C:/" + uploads.FileName, FileMode.Create))
+			{
+				uploads.CopyTo(fileStream);
+			}
+
+
 			Thread.Sleep(1000);
-			List<TicketLine> ticketLines = new List<TicketLine>();
+			List<CardLine> ticketLines = new List<CardLine>();
 			for (var i = 0; i < 6; i++)
 			{
-				ticketLines.Add(TicketLine.FromList(Enumerable.Range(0, 5).Select(e => random.Next(90))));
+				ticketLines.Add(CardLine.FromList(Enumerable.Range(0, 5).Select(e => random.Next(90))));
 			}
-			return new Ticket(ticketLines);
+			return new Card(ticketLines);
 		}
 	}
 
@@ -45,37 +53,39 @@ namespace FRI3NDS.SetLoto.Web.Controllers
 		/// Картинка с билетом в base64.
 		/// </summary>
 		public string ImageBase64 { get; set; }
+
+		public IFormFile uploads { get; set; }
 	}
 
-	public class Ticket
+	public class Card
 	{
-		public Ticket()
+		public Card()
 		{
 		}
 
-		public Ticket(List<TicketLine> ticketLines)
+		public Card(List<CardLine> ticketLines)
 		{
-			this.TicketLines = ticketLines;
+			this.CardLines = ticketLines;
 		}
 
-		public List<TicketLine> TicketLines { get; set; }
+		public List<CardLine> CardLines { get; set; }
 	}
 
-	public class TicketLine
+	public class CardLine
 	{
-		public TicketLine()
+		public CardLine()
 		{
 		}
-		public TicketLine(List<int> numbers)
+		public CardLine(List<int> numbers)
 		{
 			this.Numbers = numbers;
 		}
 		public List<int> Numbers { get; set; }
 
 
-		public static TicketLine FromList(IEnumerable<int> numbers)
+		public static CardLine FromList(IEnumerable<int> numbers)
 		{
-			return new TicketLine(numbers.ToList());
+			return new CardLine(numbers.ToList());
 		}
 	}
 }

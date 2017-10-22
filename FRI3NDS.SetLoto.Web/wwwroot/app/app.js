@@ -6,7 +6,8 @@ angular.module('loto.extensions', [
 	'ui.router',
 	'ngAnimate',
 	'naif.base64',
-	'toastr'
+	'toastr',
+	'thatisuday.dropzone'
 ]);
 angular.module('loto.services', [
 	'ngResource'
@@ -19,6 +20,7 @@ angular.module('lotoApp', ['loto.controllers', 'loto.extensions', 'loto.services
 			$rootScope.$on('$viewContentLoaded', function () {
 				$('html, body').animate({scrollTop: 0}, 200);
 			});
+			Dropzone.autoDiscover = false;
 		}
 	])
 	.config([

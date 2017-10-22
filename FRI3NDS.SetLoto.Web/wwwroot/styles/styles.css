@@ -1,0 +1,44 @@
+.cards-selection {
+	border: solid 1px black;
+
+	display: flex;
+	flex-direction: row;
+}
+
+.cards-selection .cards-sets-container {
+	flex: 0 1 auto;
+	display: flex;
+	overflow-x: auto;
+}
+
+.cards-selection .cards-buttons-container {
+	display: flex;
+	flex-direction: row;
+	flex: 0 1 15px;
+}
+
+.cards-selection .cards-set {
+	min-width: 300px;
+}
+
+.cards-selection .cards-set__card-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.cards-selection .cards-set__card {
+	display: flex;
+	flex-direction: column;
+}
+
+.cards-selection .cards-set__card-row {
+	display: flex;
+	flex: 1 0 100%;
+	flex-direction: row;
+}
+
+.cards-selection .cards-set__card-cell {
+	display: flex;
+	flex: 1 1 1px;
+	justify-content: center;
+}
